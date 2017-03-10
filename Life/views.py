@@ -680,9 +680,13 @@ def Done(request, unique_id):
 
 @login_required
 def Addarticle(request):
+    if email_check(request.user):
+        check = "oke"
+    else:
+        check = "false"
     template = loader.get_template('Addarticle.html')
-    return HttpResponse(template.render(request))
-
+    context = {"check": check}
+    return TemplateResponse(request, template, context)
 
 @login_required(login_url='/L/login')
 def Submitarticle(request):
