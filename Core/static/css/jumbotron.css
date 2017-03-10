@@ -1,0 +1,89 @@
+/* Move down content because we have a fixed navbar that is 50px tall */
+#afbhuis{
+  width:inherit;
+  opacity: 0.0;
+}
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+#tab {
+    position: absolute;
+    width: 130px;
+    height: 20px;
+    top: 35px;
+    left: 25px;
+    cursor: pointer;
+}
+
+#opschuiven{
+    margin-left: 0.5cm;
+}
+
+#vspace{
+    margin-top: 1cm;
+}
+#largevspace{
+    margin-top: 10cm;
+}
+#cont{
+    margin-left: 0.5cm;
+    margin-bottom: 1cm;
+    margin-top: 0.5cm;
+    margin-right: 1cm;
+}
+#afbeelding{
+    width: 3cm;
+    margin: auto;
+    margin-bottom: 3%;
+    height: 3cm;
+}
+#knop{
+    width: 1.7cm;
+    height: 10%;
+
+
+}
+#container1{
+   margin: auto;
+    margin-top: 1cm;
+    width: 100%;
+
+}
+
+#dumb{
+    margin-top: 1cm;
+}
+
+#deviceclass_separator{
+    margin-top: 7cm;
+}
+#blockcontainer{
+    margin-top: 1cm;
+}
+#knopb{
+    width: 2.5cm;
+    margin-left: 0.3cm;
+    margin-top: 0.3cm;
+}
+
+#laatste {
+    margin-left: 0.5cm;
+    margin-right: 0.5cm;
+}
+#probeersel{
+    width:inherit;
+    height: 100%;
+}
+
+
+#democont{
+    margin-left: 0.5cm;
+    margin-right: 0.5cm;
+}
+
+#tekst{
+    text-align: justify;
+}

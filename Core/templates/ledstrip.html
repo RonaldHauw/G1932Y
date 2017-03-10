@@ -1,0 +1,313 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Ledstrip</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static "vendor/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{% static "vendor/magnific-popup/magnific-popup.css" %}" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="{% static "css/creative2.min.css" %}" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Ledstrip</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">Ledstrip</h1>
+                <hr>
+                <a href="#Basics" class="btn btn-primary btn-xl page-scroll">Led's controll</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Basics</h2>
+                    <h4>custom color</h4>
+                    <form action="/C/change_leds/0" method="post">
+                    <p id="R"><label for="R">R</label>
+                        <input id="R" type="range" name="R" value="0" min="0" max="255">
+                        <p id="G"><label for="G">G</label>
+                        <input id="G" type="range" name="G" value="0" min="0" max="255">
+              <p id="B"><label for="B">B</label>
+                        <input id="B" type="range" name="B" value="0" min="0" max="255">
+              <p id="W"><label for="W">W</label>
+                        <input id="W" type="range" name="W" value="0" min="0" max="255">
+              <p id="Brig"><label for="Brig">Brightness</label>
+                        <input id="Brig" type="range" name="Brig" value="200" min="0" max="255">
+                    </p>
+<h5>pick a range</h5>
+                        <p id="x"><label for="x">x</label>
+                        <input id="x" type="range" name="x" value="0" min="0" max="59">
+              <p id="y"><label for="y">y</label>
+                        <input id="y" type="range" name="y" value="59" min="0" max="59">
+              <p><input id="submitbutton" type="submit" value="Submit"></p>
+                </form>
+                    <a href="/C/change_leds/01">Start music booth</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Statics</h2>
+                    <h4>x leds out of y</h4>
+                    <h5>pick your color</h5>
+                    <form action="/C/change_leds/1" method="post">
+                    <p id="R"><label for="R">R</label>
+                        <input id="R" type="range" name="R" value="0" min="0" max="255">
+                        <p id="G"><label for="G">G</label>
+                        <input id="G" type="range" name="G" value="0" min="0" max="255">
+              <p id="B"><label for="B">B</label>
+                        <input id="B" type="range" name="B" value="0" min="0" max="255">
+              <p id="W"><label for="W">W</label>
+                        <input id="W" type="range" name="W" value="0" min="0" max="255">
+
+                        <h5>pick a patern</h5>
+                        <p id="x"><label for="x">x</label>
+                        <input id="x" type="number" name="x" value="1">
+              <p id="y"><label for="y">y</label>
+                        <input id="y" type="number" name="y" value="3">
+
+
+              <p><input id="submitbutton" type="submit" value="Submit"></p>
+                </form>
+                    <hr class="primary">
+                </div>
+            </div>
+        </div>
+
+        <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Dynamics</h2>
+                    <h3>Dynamic center 1:</h3>
+                    <h4>colors: </h4>
+                    <form action="/C/change_leds/2" method="post">
+                        <p><label for="color1">Color 1:</label>
+                        <select type="r" id="color1" name="color1">
+                        <option value="01">Magic purple</option>
+                        <option value="02">Azure blue</option>
+                        <option value="03">Hard White</option>
+                        <option value="04">Light red</option>
+                            <option value="05">Warm orange</option>
+                             <option value="06">Normal White</option>
+                            <option value="07">UV catastrophe</option>
+                            <option value="08">Spring Green</option>
+                            <option value="09">Mellow yellow</option>
+                            <option value="10">Broken White</option>
+                        </select></p>
+
+
+                         <p><label for="color2">Color 2:</label>
+                        <select type="r" id="color2" name="color2">
+                        <option value="01">Magic purple</option>
+                        <option value="02">Azure blue</option>
+                        <option value="03">Hard White</option>
+                        <option value="04">Light red</option>
+                            <option value="05">Warm orange</option>
+                             <option value="06">Normal White</option>
+                            <option value="07">UV catastrophe</option>
+                            <option value="08">Spring Green</option>
+                            <option value="09">Mellow yellow</option>
+                            <option value="10">Broken White</option>
+                        </select></p>
+
+                          <p><label for="color3">Color 3:</label>
+                        <select type="r" id="color3" name="color3">
+                        <option value="01">Magic purple</option>
+                        <option value="02">Azure blue</option>
+                        <option value="03">Hard White</option>
+                        <option value="04">Light red</option>
+                            <option value="05">Warm orange</option>
+                             <option value="06">Normal White</option>
+                            <option value="07">UV catastrophe</option>
+                            <option value="08">Spring Green</option>
+                            <option value="09">Mellow yellow</option>
+                            <option value="10">Broken White</option>
+                        </select></p>
+
+
+
+                          <p><label for="color4">Color 4:</label>
+                        <select type="r" id="color4" name="color4">
+                        <option value="01">Magic purple</option>
+                        <option value="02">Azure blue</option>
+                        <option value="03">Hard White</option>
+                        <option value="04">Light red</option>
+                            <option value="05">Warm orange</option>
+                             <option value="06">Normal White</option>
+                            <option value="07">UV catastrophe</option>
+                            <option value="08">Spring Green</option>
+                            <option value="09">Mellow yellow</option>
+                            <option value="10">Broken White</option>
+                        </select></p>
+
+                        <h4>Generators</h4>
+
+                        <p><label for="colorgen">Color generators: </label>
+                        <select type="r" id="colorgen" name="colorgen">
+                        <option value="01">static</option>
+                        <option value="02">abrupt</option>
+                            <option value="03">faded</option>
+                        </select></p>
+
+                        <p>if abrupt or faded: please fill in below</p>
+
+                        <p><label for="c1">Color1</label>
+                        <select type="r" id="c1" name="c1">
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                               </select></p>
+
+
+                            <p><label for="c2">Color2</label>
+                        <select type="r" id="c2" name="c2">
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        </select></p>
+
+                            <p><label for="c3">Colo32</label>
+                        <select type="r" id="c3" name="c3">
+                        <option value="01">1</option>
+                        <option value="02">2</option>
+                        <option value="03">3</option>
+                        <option value="04">4</option>
+                        </select></p>
+
+                       <label for="timeabrupt">Time: </label>
+                        <input id="timeabrupt" type="number" name="timeabrupt" value="1">
+
+                        <label for="fad">Fade-time: </label>
+                        <input id="fad" type="text" name="fad" value="0.05">
+
+
+                        <h4>Action</h4>
+                        <p><label for="action">Action</label>
+                        <select type="r" id="action" name="action">
+                        <option value="01">Strobo</option>
+                        <option value="02">Train a to b </option>
+                        <option value="03">Train back and forth a to b</option>
+                        <option value="04">x Trains</option>
+                            <option value="06">x Trains back and forth</option>
+                            <option value="05">Color change all</option>
+                            <option value="07">Color change x out of y</option>
+                               </select></p>
+
+
+                        <label for="timeaction">Strobo repeat, action time:</label>
+                        <input id="timeaction" type="text" name="timeaction" value="1">
+
+                        <label for="a">a:</label>
+                        <input id="a" type="number" name="a" value="0">
+                        <label for="b">b:</label>
+                        <input id="b" type="number" name="b" value="60">
+                        <label for="x">x:</label>
+                        <input id="x" type="number" name="x" value="5">
+                        <label for="y">y:</label>
+                        <input id="y" type="number" name="y" value="10">
+
+
+
+              <p><input id="submitbutton" type="submit" value="Submit"></p>
+                </form>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- jQuery -->
+    <script src="{% static "vendor/jquery/jquery.min.js" %}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "vendor/bootstrap/js/bootstrap.min.js" %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="{% static "vendor/scrollreveal/scrollreveal.min.js" %}"></script>
+    <script src="{% static "vendor/magnific-popup/jquery.magnific-popup.min.js" %}"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="{% static "js/creative.min.js" %}"></script>
+
+</body>
+
+</html>
