@@ -14,6 +14,13 @@ from forms import *
 import Lauxilary
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import user_passes_test
+
+def email_check(user):
+    return user.email.endswith('hauwaerts@gmail.com')
+
+
+
 
 global last_daily_day ## om bij te houden wanneer de laatste keer de dagelijkse shizzle is bijgewerkt
 
@@ -24,12 +31,7 @@ global last_daily_day ## om bij te houden wanneer de laatste keer de dagelijkse 
 
 
 
-
-
-
-
-
-
+@user_passes_test(email_check)
 @login_required(login_url="/L/login")
 def Editdescription(request, unique_id):
     obj = Lauxilary.get_activity_object(unique_id)
@@ -61,7 +63,7 @@ def Editdescription(request, unique_id):
 
 
 
-
+@user_passes_test(email_check)
 @login_required(login_url="/L/login")
 def Showalldescisions(request):
     descisions= models.Descision.objects.all()
@@ -69,6 +71,8 @@ def Showalldescisions(request):
     context = {"descisions": descisions}
     return TemplateResponse(request, template, context)
 
+
+@user_passes_test(email_check)
 @login_required(login_url="/L/login")
 def Submitdescision(request):
     if request.method == 'POST':
@@ -78,13 +82,15 @@ def Submitdescision(request):
         cur.__adddescision__(name)
     return HttpResponseRedirect('/L/#descision')
 
-
+@user_passes_test(email_check)
 @login_required(login_url="/L/login")
 def Delofficial(request,unique_id):
     cur = Lauxilary.get_activity_object(unique_id)
     cur.delete()
     return HttpResponseRedirect('/L/showalldescisions')
 
+
+@user_passes_test(email_check)
 @login_required(login_url="/L/login")
 def Editdescision(request, id):
     cur = models.Descision.objects.get(id=id)
@@ -97,7 +103,7 @@ def Editdescision(request, id):
 
 
 
-
+@user_passes_test(email_check)
 @login_required(login_url="/L/login")
 def Adddescposneg(request, posneg, descid, optid):
     descision = models.Descision.objects.get(id = descid)
@@ -119,7 +125,7 @@ def Adddescposneg(request, posneg, descid, optid):
 
     return HttpResponseRedirect('/L/editdescision/%s/#%s' % (descision.id,option.name))
 
-
+@user_passes_test(email_check)
 @login_required(login_url="/L/login")
 def Submitcriteria(request,  descid):
     descision = models.Descision.objects.get(id = descid)
@@ -138,7 +144,7 @@ def Submitcriteria(request,  descid):
 
 
 
-
+@user_passes_test(email_check)
 @login_required(login_url="/L/login")
 def Submitoption(request,  descid):
     descision = models.Descision.objects.get(id = descid)
@@ -153,7 +159,6 @@ def Submitoption(request,  descid):
 
 
     return HttpResponseRedirect('/L/editdescision/%s/#%s' % (descision.id, name))
-
 
 def get_all_of_the_day():
     if not 'last_daily_day' in globals():
@@ -180,7 +185,7 @@ def get_all_of_the_day():
 
 
 
-
+@user_passes_test(email_check)
 @login_required(login_url="/L/login")
 def Adddescision(request):
     template = loader.get_template('Adddescision.html')
@@ -219,7 +224,7 @@ def Showlogin(request):
     template = loader.get_template('Signin.html')
     return HttpResponse(template.render(request))
 
-
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def LIndex(request):
     day = datetime.date.today().day
@@ -236,6 +241,8 @@ def LIndex(request):
                "remi": active_reminder, "dead":active_deadline, "vid":Dailystuff[1], "today": today,
                "article": Dailystuff[2], "daily":active_daily, "desc":open_desc}
     return TemplateResponse(request, template, context)
+
+
 
 @login_required(login_url='/L/login')
 def Submitwelcome(request):
@@ -273,19 +280,23 @@ def Addquote(request):
     return TemplateResponse(request, template, context)
 
 
-
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def Deletephrase(request, id):
     obj = models.Welcome_phrase.objects.get(id=id)
     obj.__delete__()
     return HttpResponseRedirect('/L/addwelcome/')
 
+
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def Deletequote(request, id):
     obj = models.Quote.objects.get(id=id)
     obj.__delete__()
     return HttpResponseRedirect('/L/addquote/')
 
+
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def Submitquote(request):
     if request.method == 'POST':
@@ -303,12 +314,16 @@ def Submitquote(request):
 
     return HttpResponseRedirect('/L/addquote')
 
+
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def Addactivity(request):
     template = loader.get_template('Addactivity.html')
     return HttpResponse(template.render(request))
 
 
+
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def Addingactivity(request):
     if request.method == 'POST':
@@ -317,7 +332,6 @@ def Addingactivity(request):
         type = form['type'].value()
         type = str(type)
 
-        print name,type
         if type == '01':
             cur = models.float_repeat()
             cur.__simpleaddflrp__(name)
@@ -346,7 +360,7 @@ def Addingactivity(request):
 
 
 
-
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def Completeactivityflrp(request,id):
     cur = models.float_repeat.objects.get(id=id)
@@ -622,7 +636,7 @@ def Editproperties(request,unique_id):
         cur.__adddead__(description,day,month,int(warning))
         return HttpResponseRedirect('/L/more/%s' % unique_id)
 
-
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def More(request, unique_id):
     obj = Lauxilary.get_activity_object(unique_id)
@@ -635,7 +649,7 @@ def More(request, unique_id):
         context = {"obj": obj}
         return TemplateResponse(request, template, context)
 
-
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def Delvid(request, id):
     obj = models.Video.objects.get(id=id)
@@ -643,6 +657,8 @@ def Delvid(request, id):
     obj.save()
     return HttpResponseRedirect('/L/#contact')
 
+
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def Morevid(request, id):
     obj = models.Video.objects.get(id=id)
@@ -662,11 +678,11 @@ def Done(request, unique_id):
     obj.save()
     return HttpResponseRedirect('/L/#about')
 
-
 @login_required
 def Addarticle(request):
     template = loader.get_template('Addarticle.html')
     return HttpResponse(template.render(request))
+
 
 @login_required(login_url='/L/login')
 def Submitarticle(request):
@@ -699,7 +715,7 @@ def Read(request, id):
         link = str(obj.link)
         return HttpResponseRedirect('%s' % link)
 
-
+@user_passes_test(email_check)
 @login_required(login_url='/L/login')
 def Deletearticle(request, id):
     obj = models.Article.objects.get(id=id)
