@@ -196,7 +196,11 @@ def Adddescision(request):
 def Showallarticles(request):
     template = loader.get_template('Allarticles.html')
     allartic = models.Article.objects.filter(silenced="N")
-    context = {"articles":allartic}
+    if email_check(request.user):
+        check = "oke"
+    else:
+        check = "false"
+    context = {"articles":allartic, "check": check }
     return TemplateResponse(request, template, context)
 
 
@@ -706,7 +710,7 @@ def Submitarticle(request):
 
 
 
-@login_required(login_url='/L/login')
+
 def Read(request, id):
     obj = models.Article.objects.get(id = id)
     print "h", str(obj.link)
